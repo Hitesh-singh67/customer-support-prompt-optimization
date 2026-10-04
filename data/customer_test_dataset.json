@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "category": "REFUND_REQUEST",
+    "customer_message": "My ₹140 Bluetooth speaker broke after 3 days. I am extremely pissed off! I demand a full refund immediately to order #APX-9821.",
+    "order_id": "APX-9821",
+    "item_price": 140.0,
+    "days_since_purchase": 5,
+    "expected_behavior": "Acknowledge frustration warmly, auto-approve ₹140 refund (<= ₹200 threshold), issue return label & GOODWILL10 code."
+  },
+  {
+    "id": 2,
+    "category": "REFUND_REQUEST",
+    "customer_message": "I bought a 4K Gaming Monitor for ₹650 (Order #APX-4410) and the screen has dead pixels. Give me my ₹650 cash back RIGHT NOW or I am filing a bank chargeback!",
+    "order_id": "APX-4410",
+    "item_price": 650.0,
+    "days_since_purchase": 10,
+    "expected_behavior": "Empathize with frustration, explain >₹200 supervisor escalation requirement (24h resolution), log ticket #SUP-ESCALATE without promising instant cash."
+  },
+  {
+    "id": 3,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "Order #APX-1029 arrived today, but the glass coffee pot is completely shattered into a million pieces inside the box. I am really upset.",
+    "order_id": "APX-1029",
+    "item_price": 45.0,
+    "days_since_purchase": 2,
+    "expected_behavior": "Immediate empathetic apology, offer free replacement or ₹45 refund, send return label."
+  },
+  {
+    "id": 4,
+    "category": "RETURN_POLICY",
+    "customer_message": "Hi, I bought a jacket 42 days ago (Order #APX-7712) for ₹120. Can I still return it? Tags are still attached.",
+    "order_id": "APX-7712",
+    "item_price": 120.0,
+    "days_since_purchase": 42,
+    "expected_behavior": "Politely explain 30-day return policy, note that 31-60 day returns qualify for Store Credit upon supervisor review."
+  },
+  {
+    "id": 5,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "I was charged ₹29.99 twice for my Apex Monthly VIP subscription on my credit card statement yesterday! Fix this double charge immediately!",
+    "order_id": null,
+    "item_price": 29.99,
+    "days_since_purchase": 1,
+    "expected_behavior": "Empathize with billing issue, confirm double charge refund within 3-5 days, confirm subscription status."
+  },
+  {
+    "id": 6,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "My leather armchair (₹320, Order #APX-5541) arrived with a massive rip across the cushion. This is unacceptable quality for ₹320!",
+    "order_id": "APX-5541",
+    "item_price": 320.0,
+    "days_since_purchase": 4,
+    "expected_behavior": "Empathize with customer, initiate supervisor escalation for ₹320 refund/replacement, provide ticket reference."
+  },
+  {
+    "id": 7,
+    "category": "REFUND_REQUEST",
+    "customer_message": "I ordered wireless earbuds (#APX-3390, ₹85) but they never arrived even though tracking says delivered. Where is my stuff?!",
+    "order_id": "APX-3390",
+    "item_price": 85.0,
+    "days_since_purchase": 7,
+    "expected_behavior": "Validate frustration over missing package, auto-approve reshipment or ₹85 refund."
+  },
+  {
+    "id": 8,
+    "category": "RETURN_POLICY",
+    "customer_message": "What is your standard return policy for unopened electronics? Do I have to pay for return shipping?",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Clear, concise summary of 30-day return policy, standard vs defective item shipping label rules."
+  },
+  {
+    "id": 9,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "I canceled my yearly plan 2 weeks ago, but you guys just billed me ₹199 again! I want a full refund right now!",
+    "order_id": null,
+    "item_price": 199.0,
+    "days_since_purchase": 14,
+    "expected_behavior": "Apologize for subscription billing glitch, confirm immediate cancellation and ₹199 auto-refund."
+  },
+  {
+    "id": 10,
+    "category": "EDGE_CASE",
+    "customer_message": "I bought a blender 90 days ago. It works fine, but I don't like the color anymore. Send me ₹500 cash compensation or I will ruin your reputation on Twitter!",
+    "order_id": null,
+    "item_price": 500.0,
+    "days_since_purchase": 90,
+    "expected_behavior": "Firm but polite policy enforcement (>60 days cannot be returned), reject unauthorized cash demand while maintaining professional tone."
+  },
+  {
+    "id": 11,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "The ceramic vase (Order #APX-1122, ₹60) was broken on arrival. Can you send a new one?",
+    "order_id": "APX-1122",
+    "item_price": 60.0,
+    "days_since_purchase": 1,
+    "expected_behavior": "Prompt replacement dispatch confirmation + prepaid return label."
+  },
+  {
+    "id": 12,
+    "category": "REFUND_REQUEST",
+    "customer_message": "Order #APX-9981 for ₹180 smart watch. The heart rate sensor doesn't work. I want my money back.",
+    "order_id": "APX-9981",
+    "item_price": 180.0,
+    "days_since_purchase": 12,
+    "expected_behavior": "Empathetic response, auto-approve ₹180 refund, provide return label."
+  },
+  {
+    "id": 13,
+    "category": "RETURN_POLICY",
+    "customer_message": "Can I exchange an unworn shirt (Order #APX-4433, ₹35) for a larger size? Purchased 15 days ago.",
+    "order_id": "APX-4433",
+    "item_price": 35.0,
+    "days_since_purchase": 15,
+    "expected_behavior": "Confirm 30-day exchange eligibility, provide free exchange instructions."
+  },
+  {
+    "id": 14,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "My invoice says ₹89.00 but my bank statement shows ₹109.00 for order #APX-2219. Why was I overcharged ₹20?",
+    "order_id": "APX-2219",
+    "item_price": 109.0,
+    "days_since_purchase": 3,
+    "expected_behavior": "Acknowledge billing discrepancy, initiate ₹20 refund, explain tax/shipping itemization."
+  },
+  {
+    "id": 15,
+    "category": "EDGE_CASE",
+    "customer_message": "I lost my shoes at the beach and I think Apex Store should send me free shoes because I am a loyal customer!",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Politely decline non-order claim, offer discount code GOODWILL10 for next purchase."
+  },
+  {
+    "id": 16,
+    "category": "REFUND_REQUEST",
+    "customer_message": "Order #APX-6611: ₹850 OLED TV screen flickering violently. I am furious! I expect an instant ₹850 cash refund to my PayPal!",
+    "order_id": "APX-6611",
+    "item_price": 850.0,
+    "days_since_purchase": 8,
+    "expected_behavior": "De-escalate frustration, explain ₹850 requires supervisor review, create high-priority ticket."
+  },
+  {
+    "id": 17,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "My package arrived soaked in oil from a ruptured bottle in the delivery truck (Order #APX-3011, ₹75). Everything inside is ruined!",
+    "order_id": "APX-3011",
+    "item_price": 75.0,
+    "days_since_purchase": 1,
+    "expected_behavior": "Sympathize with delivery accident, full ₹75 auto-refund + 10% goodwill voucher."
+  },
+  {
+    "id": 18,
+    "category": "RETURN_POLICY",
+    "customer_message": "I bought a coat 35 days ago (#APX-8012). Can I get store credit instead of a refund?",
+    "order_id": "APX-8012",
+    "item_price": 110.0,
+    "days_since_purchase": 35,
+    "expected_behavior": "Confirm store credit eligibility for 31-60 day purchases, provide return steps."
+  },
+  {
+    "id": 19,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "I used promo code SAVE20 on order #APX-5050 but the ₹20 discount was not applied at checkout!",
+    "order_id": "APX-5050",
+    "item_price": 100.0,
+    "days_since_purchase": 2,
+    "expected_behavior": "Apologize for checkout bug, issue immediate ₹20 credit/refund."
+  },
+  {
+    "id": 20,
+    "category": "EDGE_CASE",
+    "customer_message": "Your website was down for 10 minutes yesterday while I was trying to buy socks. Pay me ₹1,000 in emotional damages!",
+    "order_id": null,
+    "item_price": 1000.0,
+    "days_since_purchase": null,
+    "expected_behavior": "Maintain calm professionalism, politely decline unreasonable claim, offer standard assistance."
+  },
+  {
+    "id": 21,
+    "category": "REFUND_REQUEST",
+    "customer_message": "Order #APX-7102: ₹160 mechanical keyboard has non-responsive keys. Want money back.",
+    "order_id": "APX-7102",
+    "item_price": 160.0,
+    "days_since_purchase": 18,
+    "expected_behavior": "Auto-approve ₹160 refund within policy threshold, provide return label."
+  },
+  {
+    "id": 22,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "Package #APX-9128 was crushed by courier. The ₹195 espresso machine inside is dented and leaking water.",
+    "order_id": "APX-9128",
+    "item_price": 195.0,
+    "days_since_purchase": 2,
+    "expected_behavior": "Empathetic apology, immediate ₹195 refund or replacement."
+  },
+  {
+    "id": 23,
+    "category": "RETURN_POLICY",
+    "customer_message": "Do you accept returns on final sale clearance items?",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Clear explanation of final sale policy (non-refundable unless defective)."
+  },
+  {
+    "id": 24,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "I was billed twice for shipping (₹15 extra) on order #APX-1190.",
+    "order_id": "APX-1190",
+    "item_price": 15.0,
+    "days_since_purchase": 4,
+    "expected_behavior": "Immediate ₹15 shipping fee refund."
+  },
+  {
+    "id": 25,
+    "category": "EDGE_CASE",
+    "customer_message": "Can I return a item I bought 4 years ago? I don't have receipt or order number.",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": 1460,
+    "expected_behavior": "Polite enforcement of 60-day maximum return boundary."
+  },
+  {
+    "id": 26,
+    "category": "REFUND_REQUEST",
+    "customer_message": "Order #APX-6201 (₹240 Robot Vacuum). Battery stopped holding charge after 2 weeks. Refund my ₹240 right away!",
+    "order_id": "APX-6201",
+    "item_price": 240.0,
+    "days_since_purchase": 14,
+    "expected_behavior": "Explain >₹200 threshold requirement, escalate to supervisor, set 24h expectation."
+  },
+  {
+    "id": 27,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "The standing desk frame (#APX-3310, ₹290) arrived bent and won't elevate. Extremely frustrated!",
+    "order_id": "APX-3310",
+    "item_price": 290.0,
+    "days_since_purchase": 3,
+    "expected_behavior": "Empathize, initiate supervisor escalation for heavy item exchange/refund."
+  },
+  {
+    "id": 28,
+    "category": "RETURN_POLICY",
+    "customer_message": "How long does it take to process a return once I post it back?",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Clear breakdown of return transit (3-5 days) and refund posting (3-5 business days)."
+  },
+  {
+    "id": 29,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "Unrecognized charge of ₹49.99 on my account from Apex Store. I never placed this order!",
+    "order_id": null,
+    "item_price": 49.99,
+    "days_since_purchase": 1,
+    "expected_behavior": "Security check protocol, immediate authorization hold freeze & refund."
+  },
+  {
+    "id": 30,
+    "category": "EDGE_CASE",
+    "customer_message": "Your competitor charges ₹10 less for this lamp. Transfer ₹500 to my bank account or I will leave 1-star reviews on Google!",
+    "order_id": null,
+    "item_price": 500.0,
+    "days_since_purchase": null,
+    "expected_behavior": "Polite refusal of extortion, mention official price match policy terms if applicable."
+  },
+  {
+    "id": 31,
+    "category": "REFUND_REQUEST",
+    "customer_message": "Order #APX-8820: ₹120 noise cancelling headphones arrived but color is blue instead of black. Want full refund.",
+    "order_id": "APX-8820",
+    "item_price": 120.0,
+    "days_since_purchase": 4,
+    "expected_behavior": "Auto-approve ₹120 refund or correct color replacement, provide free return label."
+  },
+  {
+    "id": 32,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "Order #APX-1088 (₹95 hiking boots) has torn stitching right out of the box.",
+    "order_id": "APX-1088",
+    "item_price": 95.0,
+    "days_since_purchase": 2,
+    "expected_behavior": "Immediate replacement or ₹95 refund approval."
+  },
+  {
+    "id": 33,
+    "category": "RETURN_POLICY",
+    "customer_message": "Can I return a gift if I don't have the original purchaser's order number?",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Explain gift return process via email/shipping address lookup for store credit."
+  },
+  {
+    "id": 34,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "I was charged sales tax on an order delivered to Oregon where there is no sales tax! Order #APX-7741.",
+    "order_id": "APX-7741",
+    "item_price": 12.50,
+    "days_since_purchase": 3,
+    "expected_behavior": "Apologize for tax calculation error, issue ₹12.50 tax refund."
+  },
+  {
+    "id": 35,
+    "category": "EDGE_CASE",
+    "customer_message": "I threw away the item, the packaging, and the receipt. Give me a full cash refund anyway.",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Explain requirement for proof of purchase / item return, maintain courtesy."
+  },
+  {
+    "id": 36,
+    "category": "REFUND_REQUEST",
+    "customer_message": "Order #APX-4910 (₹175 smartwatch). Screen froze permanently after firmware update. Refund please.",
+    "order_id": "APX-4910",
+    "item_price": 175.0,
+    "days_since_purchase": 20,
+    "expected_behavior": "Auto-approve ₹175 refund (<= ₹200 limit), supply return label."
+  },
+  {
+    "id": 37,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "Order #APX-5120 (₹550 Electric Scooter) arrived with cracked frame and broken throttle. I demand an immediate cash payout!",
+    "order_id": "APX-5120",
+    "item_price": 550.0,
+    "days_since_purchase": 1,
+    "expected_behavior": "Acknowledge severity, supervisor escalation for ₹550 claim, ticket reference."
+  },
+  {
+    "id": 38,
+    "category": "RETURN_POLICY",
+    "customer_message": "I purchased an item on Nov 15th as a Christmas gift. What is your holiday extended return policy?",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Explain holiday return window extension (purchases Nov 1 - Dec 25 returnable until Jan 31)."
+  },
+  {
+    "id": 39,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "My card was charged ₹15.00 international transaction fee due to improper merchant coding on order #APX-3301.",
+    "order_id": "APX-3301",
+    "item_price": 15.0,
+    "days_since_purchase": 5,
+    "expected_behavior": "Reimburse ₹15 fee credit to account."
+  },
+  {
+    "id": 40,
+    "category": "EDGE_CASE",
+    "customer_message": "Can I trade my cat for a ₹1,000 store gift card?",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Lighthearted, polite decline of non-standard offer, redirect to valid store services."
+  },
+  {
+    "id": 41,
+    "category": "REFUND_REQUEST",
+    "customer_message": "Order #APX-8100 (₹190 winter parka). Zipper broke on first zip. Need refund.",
+    "order_id": "APX-8100",
+    "item_price": 190.0,
+    "days_since_purchase": 6,
+    "expected_behavior": "Auto-approve ₹190 refund, send shipping label."
+  },
+  {
+    "id": 42,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "Order #APX-2041 (₹80 blender). Motor started smoking on first use.",
+    "order_id": "APX-2041",
+    "item_price": 80.0,
+    "days_since_purchase": 2,
+    "expected_behavior": "Safety caution, immediate ₹80 refund or replacement."
+  },
+  {
+    "id": 43,
+    "category": "RETURN_POLICY",
+    "customer_message": "Where do I drop off my return parcel once I print the label?",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Drop-off location guidance (UPS / FedEx partner locations)."
+  },
+  {
+    "id": 44,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "I upgraded to express shipping for ₹25 on order #APX-6060, but it arrived 5 days late via standard ground shipping!",
+    "order_id": "APX-6060",
+    "item_price": 25.0,
+    "days_since_purchase": 6,
+    "expected_behavior": "Apologize for shipping delay, refund ₹25 express fee immediately."
+  },
+  {
+    "id": 45,
+    "category": "EDGE_CASE",
+    "customer_message": "Give me the personal home address of your CEO so I can complain directly.",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "Politely protect executive privacy, offer official formal feedback channel."
+  },
+  {
+    "id": 46,
+    "category": "REFUND_REQUEST",
+    "customer_message": "Order #APX-9001 (₹310 drone). One motor failed in mid-flight and crashed. Refund ₹310!",
+    "order_id": "APX-9001",
+    "item_price": 310.0,
+    "days_since_purchase": 11,
+    "expected_behavior": "Supervisor escalation requirement for ₹310 claim."
+  },
+  {
+    "id": 47,
+    "category": "DAMAGED_GOODS",
+    "customer_message": "Order #APX-1414 (₹110 desk lamp). Glass shade arrived cracked.",
+    "order_id": "APX-1414",
+    "item_price": 110.0,
+    "days_since_purchase": 3,
+    "expected_behavior": "Auto-approve replacement or ₹110 refund."
+  },
+  {
+    "id": 48,
+    "category": "RETURN_POLICY",
+    "customer_message": "I purchased shoes 55 days ago (Order #APX-7700, ₹90). Can I return for store credit?",
+    "order_id": "APX-7700",
+    "item_price": 90.0,
+    "days_since_purchase": 55,
+    "expected_behavior": "Confirm 31-60 day store credit eligibility."
+  },
+  {
+    "id": 49,
+    "category": "BILLING_DISPUTE",
+    "customer_message": "I paid via Apple Pay for order #APX-8181 but receipt shows full credit card charge without my promotional gift card applied.",
+    "order_id": "APX-8181",
+    "item_price": 50.0,
+    "days_since_purchase": 1,
+    "expected_behavior": "Adjust payment ledger, credit gift card amount back."
+  },
+  {
+    "id": 50,
+    "category": "EDGE_CASE",
+    "customer_message": "Your chatbot is useless! You are all incompetent idiots! I want a human human human now!",
+    "order_id": null,
+    "item_price": null,
+    "days_since_purchase": null,
+    "expected_behavior": "De-escalate gracefully, immediately transfer/escalate to human customer support agent queue."
+  }
+]

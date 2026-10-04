@@ -1,0 +1,2982 @@
+{
+  "timestamp": "2026-10-04 17:27:17",
+  "summary": {
+    "total_test_cases": 50,
+    "baseline_avg_csat": 3.43,
+    "optimized_avg_csat": 4.14,
+    "csat_lift_points": 0.7,
+    "csat_lift_percentage": 20.51,
+    "dimensions": {
+      "empathy": {
+        "baseline": 3.34,
+        "optimized": 4.09
+      },
+      "actionability": {
+        "baseline": 3.2,
+        "optimized": 4.04
+      },
+      "policy_compliance": {
+        "baseline": 3.6,
+        "optimized": 4.27
+      },
+      "conciseness": {
+        "baseline": 3.8,
+        "optimized": 4.19
+      }
+    },
+    "performance": {
+      "baseline_avg_latency_ms": 588,
+      "optimized_avg_latency_ms": 1436,
+      "baseline_total_cost": 0.001665,
+      "optimized_total_cost": 0.019598
+    },
+    "guardrail_violations_intercepted": 9,
+    "category_breakdown": {
+      "REFUND_REQUEST": {
+        "baseline_avg_csat": 3.41,
+        "optimized_avg_csat": 4.57,
+        "lift_pct": 33.89
+      },
+      "DAMAGED_GOODS": {
+        "baseline_avg_csat": 3.41,
+        "optimized_avg_csat": 4.31,
+        "lift_pct": 26.58
+      },
+      "RETURN_POLICY": {
+        "baseline_avg_csat": 3.45,
+        "optimized_avg_csat": 3.82,
+        "lift_pct": 10.61
+      },
+      "BILLING_DISPUTE": {
+        "baseline_avg_csat": 3.45,
+        "optimized_avg_csat": 4.06,
+        "lift_pct": 17.68
+      },
+      "EDGE_CASE": {
+        "baseline_avg_csat": 3.45,
+        "optimized_avg_csat": 3.86,
+        "lift_pct": 11.79
+      }
+    }
+  },
+  "detailed_cases": [
+    {
+      "id": 1,
+      "category": "REFUND_REQUEST",
+      "customer_message": "My \u20b9140 Bluetooth speaker broke after 3 days. I am extremely pissed off! I demand a full refund immediately to order #APX-9821.",
+      "baseline": {
+        "response": "Hello. Thank you for reaching out to customer support. I apologize for the issue with your item. You can return the item according to our return policy on our website or contact our support team during business hours for assistance.",
+        "latency_ms": 681,
+        "input_tokens": 83,
+        "output_tokens": 58,
+        "token_cost": 4.7e-05,
+        "scores": {
+          "empathy_score": 2.7,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.24,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order APX-9821. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9140.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-9821",
+            "product_name": "Customer Product",
+            "monetary_amount": 140.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order APX-9821. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9140.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 2028,
+        "stage_latencies": {
+          "classifier_ms": 696,
+          "generation_ms": 645,
+          "guardrail_ms": 686
+        },
+        "input_tokens": 1701,
+        "output_tokens": 230,
+        "token_cost": 0.000393,
+        "scores": {
+          "empathy_score": 4.8,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.72,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.48
+    },
+    {
+      "id": 2,
+      "category": "REFUND_REQUEST",
+      "customer_message": "I bought a 4K Gaming Monitor for \u20b9650 (Order #APX-4410) and the screen has dead pixels. Give me my \u20b9650 cash back RIGHT NOW or I am filing a bank chargeback!",
+      "baseline": {
+        "response": "We apologize for the inconvenience with your monitor. Please visit our returns portal online to submit a return claim. Refunds will be processed according to standard processing times.",
+        "latency_ms": 561,
+        "input_tokens": 91,
+        "output_tokens": 46,
+        "token_cost": 4.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-4410",
+            "product_name": "Customer Product",
+            "monetary_amount": 650.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 1315,
+        "stage_latencies": {
+          "classifier_ms": 489,
+          "generation_ms": 397,
+          "guardrail_ms": 428
+        },
+        "input_tokens": 1713,
+        "output_tokens": 205,
+        "token_cost": 0.00038,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 3,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "Order #APX-1029 arrived today, but the glass coffee pot is completely shattered into a million pieces inside the box. I am really upset.",
+      "baseline": {
+        "response": "Hello. Thank you for reaching out to customer support. I apologize for the issue with your item. You can return the item according to our return policy on our website or contact our support team during business hours for assistance.",
+        "latency_ms": 528,
+        "input_tokens": 85,
+        "output_tokens": 58,
+        "token_cost": 4.8e-05,
+        "scores": {
+          "empathy_score": 2.7,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.24,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry to hear that your item in order APX-1029 arrived damaged, and I completely understand your frustration!\n\nSince your item is under \u20b9200, I have immediately authorized a full refund of full back to your original payment method (3-5 business days processing). If you prefer a free replacement instead, just let me know!\n\nI've also emailed you a prepaid return shipping label along with a 10% discount code (GOODWILL10) for your next order.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-1029",
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am so sorry to hear that your item in order APX-1029 arrived damaged, and I completely understand your frustration!\n\nSince your item is under \u20b9200, I have immediately authorized a full refund of full back to your original payment method (3-5 business days processing). If you prefer a free replacement instead, just let me know!\n\nI've also emailed you a prepaid return shipping label along with a 10% discount code (GOODWILL10) for your next order."
+        },
+        "latency_ms": 1380,
+        "stage_latencies": {
+          "classifier_ms": 480,
+          "generation_ms": 474,
+          "guardrail_ms": 424
+        },
+        "input_tokens": 1738,
+        "output_tokens": 294,
+        "token_cost": 0.000437,
+        "scores": {
+          "empathy_score": 4.8,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.72,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.48
+    },
+    {
+      "id": 4,
+      "category": "RETURN_POLICY",
+      "customer_message": "Hi, I bought a jacket 42 days ago (Order #APX-7712) for \u20b9120. Can I still return it? Tags are still attached.",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 540,
+        "input_tokens": 79,
+        "output_tokens": 36,
+        "token_cost": 3.3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "Thank you for contacting us regarding order APX-7712! While our standard cash refund window is 30 days, items returned between 31 and 60 days are eligible for Apex Store Credit.\n\nI can issue a prepaid return shipping label right now for you to return the item for full store credit. Would you like me to proceed with generating the store credit label?",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-7712",
+            "product_name": "Customer Product",
+            "monetary_amount": 120.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "Thank you for contacting us regarding order APX-7712! While our standard cash refund window is 30 days, items returned between 31 and 60 days are eligible for Apex Store Credit.\n\nI can issue a prepaid return shipping label right now for you to return the item for full store credit. Would you like me to proceed with generating the store credit label?"
+        },
+        "latency_ms": 1305,
+        "stage_latencies": {
+          "classifier_ms": 364,
+          "generation_ms": 499,
+          "guardrail_ms": 441
+        },
+        "input_tokens": 1699,
+        "output_tokens": 244,
+        "token_cost": 0.000401,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 5,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "I was charged \u20b929.99 twice for my Apex Monthly VIP subscription on my credit card statement yesterday! Fix this double charge immediately!",
+      "baseline": {
+        "response": "I apologize for any billing confusion. Please check your bank account or send us your receipt so we can investigate.",
+        "latency_ms": 544,
+        "input_tokens": 86,
+        "output_tokens": 29,
+        "token_cost": 3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the billing confusion! I completely understand how frustrating unexpected charges can be.\n\nI have reviewed your account and immediately issued a full refund of the duplicate charge back to your payment method (processing takes 3-5 business days). I've also emailed you a transaction receipt confirmation for your records.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": 29.99
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am so sorry for the billing confusion! I completely understand how frustrating unexpected charges can be.\n\nI have reviewed your account and immediately issued a full refund of the duplicate charge back to your payment method (processing takes 3-5 business days). I've also emailed you a transaction receipt confirmation for your records."
+        },
+        "latency_ms": 1435,
+        "stage_latencies": {
+          "classifier_ms": 465,
+          "generation_ms": 395,
+          "guardrail_ms": 574
+        },
+        "input_tokens": 1709,
+        "output_tokens": 236,
+        "token_cost": 0.000398,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 6,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "My leather armchair (\u20b9320, Order #APX-5541) arrived with a massive rip across the cushion. This is unacceptable quality for \u20b9320!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 676,
+        "input_tokens": 84,
+        "output_tokens": 34,
+        "token_cost": 3.3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-5541",
+            "product_name": "Customer Product",
+            "monetary_amount": 320.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 1660,
+        "stage_latencies": {
+          "classifier_ms": 451,
+          "generation_ms": 778,
+          "guardrail_ms": 431
+        },
+        "input_tokens": 1699,
+        "output_tokens": 205,
+        "token_cost": 0.000378,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 7,
+      "category": "REFUND_REQUEST",
+      "customer_message": "I ordered wireless earbuds (#APX-3390, \u20b985) but they never arrived even though tracking says delivered. Where is my stuff?!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 540,
+        "input_tokens": 82,
+        "output_tokens": 34,
+        "token_cost": 3.3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-3390! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-3390",
+            "product_name": "Customer Product",
+            "monetary_amount": 85.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-3390! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1422,
+        "stage_latencies": {
+          "classifier_ms": 444,
+          "generation_ms": 421,
+          "guardrail_ms": 557
+        },
+        "input_tokens": 1696,
+        "output_tokens": 224,
+        "token_cost": 0.000389,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 8,
+      "category": "RETURN_POLICY",
+      "customer_message": "What is your standard return policy for unopened electronics? Do I have to pay for return shipping?",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 1148,
+        "input_tokens": 76,
+        "output_tokens": 36,
+        "token_cost": 3.3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1390,
+        "stage_latencies": {
+          "classifier_ms": 519,
+          "generation_ms": 464,
+          "guardrail_ms": 405
+        },
+        "input_tokens": 1683,
+        "output_tokens": 224,
+        "token_cost": 0.000387,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 9,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "I canceled my yearly plan 2 weeks ago, but you guys just billed me \u20b9199 again! I want a full refund right now!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 663,
+        "input_tokens": 79,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order your order. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9199.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": 199.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order your order. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9199.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 1439,
+        "stage_latencies": {
+          "classifier_ms": 478,
+          "generation_ms": 377,
+          "guardrail_ms": 583
+        },
+        "input_tokens": 1691,
+        "output_tokens": 228,
+        "token_cost": 0.00039,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 10,
+      "category": "EDGE_CASE",
+      "customer_message": "I bought a blender 90 days ago. It works fine, but I don't like the color anymore. Send me \u20b9500 cash compensation or I will ruin your reputation on Twitter!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 1499,
+        "input_tokens": 90,
+        "output_tokens": 34,
+        "token_cost": 3.4e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": 500.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 1306,
+        "stage_latencies": {
+          "classifier_ms": 434,
+          "generation_ms": 433,
+          "guardrail_ms": 439
+        },
+        "input_tokens": 1702,
+        "output_tokens": 193,
+        "token_cost": 0.000371,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 11,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "The ceramic vase (Order #APX-1122, \u20b960) was broken on arrival. Can you send a new one?",
+      "baseline": {
+        "response": "Hello. Thank you for reaching out to customer support. I apologize for the issue with your item. You can return the item according to our return policy on our website or contact our support team during business hours for assistance.",
+        "latency_ms": 543,
+        "input_tokens": 73,
+        "output_tokens": 58,
+        "token_cost": 4.6e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry to hear that your item in order APX-1122 arrived damaged, and I completely understand your frustration!\n\nSince your item is under \u20b9200, I have immediately authorized a full refund of \u20b960.00 back to your original payment method (3-5 business days processing). If you prefer a free replacement instead, just let me know!\n\nI've also emailed you a prepaid return shipping label along with a 10% discount code (GOODWILL10) for your next order.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-1122",
+            "product_name": "Customer Product",
+            "monetary_amount": 60.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am so sorry to hear that your item in order APX-1122 arrived damaged, and I completely understand your frustration!\n\nSince your item is under \u20b9200, I have immediately authorized a full refund of \u20b960.00 back to your original payment method (3-5 business days processing). If you prefer a free replacement instead, just let me know!\n\nI've also emailed you a prepaid return shipping label along with a 10% discount code (GOODWILL10) for your next order."
+        },
+        "latency_ms": 1314,
+        "stage_latencies": {
+          "classifier_ms": 439,
+          "generation_ms": 437,
+          "guardrail_ms": 438
+        },
+        "input_tokens": 1713,
+        "output_tokens": 296,
+        "token_cost": 0.000435,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 12,
+      "category": "REFUND_REQUEST",
+      "customer_message": "Order #APX-9981 for \u20b9180 smart watch. The heart rate sensor doesn't work. I want my money back.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 554,
+        "input_tokens": 75,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order APX-9981. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9180.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-9981",
+            "product_name": "Customer Product",
+            "monetary_amount": 180.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order APX-9981. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9180.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 2695,
+        "stage_latencies": {
+          "classifier_ms": 874,
+          "generation_ms": 946,
+          "guardrail_ms": 873
+        },
+        "input_tokens": 1685,
+        "output_tokens": 230,
+        "token_cost": 0.000391,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 13,
+      "category": "RETURN_POLICY",
+      "customer_message": "Can I exchange an unworn shirt (Order #APX-4433, \u20b935) for a larger size? Purchased 15 days ago.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 536,
+        "input_tokens": 75,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-4433! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-4433",
+            "product_name": "Customer Product",
+            "monetary_amount": 35.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-4433! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1308,
+        "stage_latencies": {
+          "classifier_ms": 446,
+          "generation_ms": 430,
+          "guardrail_ms": 432
+        },
+        "input_tokens": 1682,
+        "output_tokens": 224,
+        "token_cost": 0.000387,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 14,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "My invoice says \u20b989.00 but my bank statement shows \u20b9109.00 for order #APX-2219. Why was I overcharged \u20b920?",
+      "baseline": {
+        "response": "I apologize for any billing confusion. Please check your bank account or send us your receipt so we can investigate.",
+        "latency_ms": 548,
+        "input_tokens": 78,
+        "output_tokens": 29,
+        "token_cost": 2.9e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the billing confusion! I completely understand how frustrating unexpected charges can be.\n\nI have reviewed your account and immediately issued a full refund of the duplicate charge back to your payment method (processing takes 3-5 business days). I've also emailed you a transaction receipt confirmation for your records.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-2219",
+            "product_name": "Customer Product",
+            "monetary_amount": 89.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am so sorry for the billing confusion! I completely understand how frustrating unexpected charges can be.\n\nI have reviewed your account and immediately issued a full refund of the duplicate charge back to your payment method (processing takes 3-5 business days). I've also emailed you a transaction receipt confirmation for your records."
+        },
+        "latency_ms": 1486,
+        "stage_latencies": {
+          "classifier_ms": 429,
+          "generation_ms": 519,
+          "guardrail_ms": 537
+        },
+        "input_tokens": 1694,
+        "output_tokens": 238,
+        "token_cost": 0.000397,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 15,
+      "category": "EDGE_CASE",
+      "customer_message": "I lost my shoes at the beach and I think Apex Store should send me free shoes because I am a loyal customer!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 868,
+        "input_tokens": 78,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1403,
+        "stage_latencies": {
+          "classifier_ms": 435,
+          "generation_ms": 572,
+          "guardrail_ms": 396
+        },
+        "input_tokens": 1688,
+        "output_tokens": 224,
+        "token_cost": 0.000388,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 16,
+      "category": "REFUND_REQUEST",
+      "customer_message": "Order #APX-6611: \u20b9850 OLED TV screen flickering violently. I am furious! I expect an instant \u20b9850 cash refund to my PayPal!",
+      "baseline": {
+        "response": "Hello. Thank you for reaching out to customer support. I apologize for the issue with your item. You can return the item according to our return policy on our website or contact our support team during business hours for assistance.",
+        "latency_ms": 523,
+        "input_tokens": 82,
+        "output_tokens": 58,
+        "token_cost": 4.7e-05,
+        "scores": {
+          "empathy_score": 2.7,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.24,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-6611",
+            "product_name": "Customer Product",
+            "monetary_amount": 850.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 1412,
+        "stage_latencies": {
+          "classifier_ms": 460,
+          "generation_ms": 571,
+          "guardrail_ms": 379
+        },
+        "input_tokens": 1719,
+        "output_tokens": 228,
+        "token_cost": 0.000395,
+        "scores": {
+          "empathy_score": 4.8,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.72,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.48
+    },
+    {
+      "id": 17,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "My package arrived soaked in oil from a ruptured bottle in the delivery truck (Order #APX-3011, \u20b975). Everything inside is ruined!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 579,
+        "input_tokens": 84,
+        "output_tokens": 34,
+        "token_cost": 3.3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry to hear that your item in order APX-3011 arrived damaged, and I completely understand your frustration!\n\nSince your item is under \u20b9200, I have immediately authorized a full refund of \u20b975.00 back to your original payment method (3-5 business days processing). If you prefer a free replacement instead, just let me know!\n\nI've also emailed you a prepaid return shipping label along with a 10% discount code (GOODWILL10) for your next order.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-3011",
+            "product_name": "Customer Product",
+            "monetary_amount": 75.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am so sorry to hear that your item in order APX-3011 arrived damaged, and I completely understand your frustration!\n\nSince your item is under \u20b9200, I have immediately authorized a full refund of \u20b975.00 back to your original payment method (3-5 business days processing). If you prefer a free replacement instead, just let me know!\n\nI've also emailed you a prepaid return shipping label along with a 10% discount code (GOODWILL10) for your next order."
+        },
+        "latency_ms": 1442,
+        "stage_latencies": {
+          "classifier_ms": 449,
+          "generation_ms": 430,
+          "guardrail_ms": 562
+        },
+        "input_tokens": 1735,
+        "output_tokens": 296,
+        "token_cost": 0.000438,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 18,
+      "category": "RETURN_POLICY",
+      "customer_message": "I bought a coat 35 days ago (#APX-8012). Can I get store credit instead of a refund?",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 501,
+        "input_tokens": 72,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order APX-8012. I understand you want a refund right away!\n\nI have immediately approved your refund of full back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-8012",
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order APX-8012. I understand you want a refund right away!\n\nI have immediately approved your refund of full back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 1464,
+        "stage_latencies": {
+          "classifier_ms": 513,
+          "generation_ms": 527,
+          "guardrail_ms": 423
+        },
+        "input_tokens": 1679,
+        "output_tokens": 228,
+        "token_cost": 0.000389,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 19,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "I used promo code SAVE20 on order #APX-5050 but the \u20b920 discount was not applied at checkout!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 584,
+        "input_tokens": 75,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-5050! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-5050",
+            "product_name": "Customer Product",
+            "monetary_amount": 20.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-5050! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 2103,
+        "stage_latencies": {
+          "classifier_ms": 710,
+          "generation_ms": 696,
+          "guardrail_ms": 696
+        },
+        "input_tokens": 1681,
+        "output_tokens": 224,
+        "token_cost": 0.000387,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 20,
+      "category": "EDGE_CASE",
+      "customer_message": "Your website was down for 10 minutes yesterday while I was trying to buy socks. Pay me \u20b91,000 in emotional damages!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 581,
+        "input_tokens": 80,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": 1.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1233,
+        "stage_latencies": {
+          "classifier_ms": 374,
+          "generation_ms": 417,
+          "guardrail_ms": 441
+        },
+        "input_tokens": 1691,
+        "output_tokens": 224,
+        "token_cost": 0.000388,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 21,
+      "category": "REFUND_REQUEST",
+      "customer_message": "Order #APX-7102: \u20b9160 mechanical keyboard has non-responsive keys. Want money back.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 520,
+        "input_tokens": 72,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order APX-7102. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9160.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-7102",
+            "product_name": "Customer Product",
+            "monetary_amount": 160.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order APX-7102. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9160.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 1336,
+        "stage_latencies": {
+          "classifier_ms": 444,
+          "generation_ms": 356,
+          "guardrail_ms": 536
+        },
+        "input_tokens": 1679,
+        "output_tokens": 230,
+        "token_cost": 0.00039,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 22,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "Package #APX-9128 was crushed by courier. The \u20b9195 espresso machine inside is dented and leaking water.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 529,
+        "input_tokens": 77,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry to hear that your item in order APX-9128 arrived damaged, and I completely understand your frustration!\n\nSince your item is under \u20b9200, I have immediately authorized a full refund of \u20b9195.00 back to your original payment method (3-5 business days processing). If you prefer a free replacement instead, just let me know!\n\nI've also emailed you a prepaid return shipping label along with a 10% discount code (GOODWILL10) for your next order.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-9128",
+            "product_name": "Customer Product",
+            "monetary_amount": 195.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am so sorry to hear that your item in order APX-9128 arrived damaged, and I completely understand your frustration!\n\nSince your item is under \u20b9200, I have immediately authorized a full refund of \u20b9195.00 back to your original payment method (3-5 business days processing). If you prefer a free replacement instead, just let me know!\n\nI've also emailed you a prepaid return shipping label along with a 10% discount code (GOODWILL10) for your next order."
+        },
+        "latency_ms": 1745,
+        "stage_latencies": {
+          "classifier_ms": 421,
+          "generation_ms": 703,
+          "guardrail_ms": 619
+        },
+        "input_tokens": 1722,
+        "output_tokens": 296,
+        "token_cost": 0.000436,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 23,
+      "category": "RETURN_POLICY",
+      "customer_message": "Do you accept returns on final sale clearance items?",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 474,
+        "input_tokens": 64,
+        "output_tokens": 36,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1478,
+        "stage_latencies": {
+          "classifier_ms": 517,
+          "generation_ms": 558,
+          "guardrail_ms": 402
+        },
+        "input_tokens": 1660,
+        "output_tokens": 224,
+        "token_cost": 0.000383,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 24,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "I was billed twice for shipping (\u20b915 extra) on order #APX-1190.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 506,
+        "input_tokens": 67,
+        "output_tokens": 34,
+        "token_cost": 3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-1190! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-1190",
+            "product_name": "Customer Product",
+            "monetary_amount": 15.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-1190! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1291,
+        "stage_latencies": {
+          "classifier_ms": 434,
+          "generation_ms": 429,
+          "guardrail_ms": 427
+        },
+        "input_tokens": 1666,
+        "output_tokens": 224,
+        "token_cost": 0.000384,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 25,
+      "category": "EDGE_CASE",
+      "customer_message": "Can I return a item I bought 4 years ago? I don't have receipt or order number.",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 822,
+        "input_tokens": 71,
+        "output_tokens": 36,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "Thank you for reaching out. Under Apex Store policy, items purchased beyond 60 days are outside our return window and cannot be returned or refunded. We appreciate your understanding and would be happy to assist you with any questions about our current product lineup.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "Thank you for reaching out. Under Apex Store policy, items purchased beyond 60 days are outside our return window and cannot be returned or refunded. We appreciate your understanding and would be happy to assist you with any questions about our current product lineup."
+        },
+        "latency_ms": 1489,
+        "stage_latencies": {
+          "classifier_ms": 425,
+          "generation_ms": 504,
+          "guardrail_ms": 558
+        },
+        "input_tokens": 1662,
+        "output_tokens": 202,
+        "token_cost": 0.00037,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 26,
+      "category": "REFUND_REQUEST",
+      "customer_message": "Order #APX-6201 (\u20b9240 Robot Vacuum). Battery stopped holding charge after 2 weeks. Refund my \u20b9240 right away!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 617,
+        "input_tokens": 79,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-6201",
+            "product_name": "Customer Product",
+            "monetary_amount": 240.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 1238,
+        "stage_latencies": {
+          "classifier_ms": 359,
+          "generation_ms": 442,
+          "guardrail_ms": 435
+        },
+        "input_tokens": 1712,
+        "output_tokens": 228,
+        "token_cost": 0.000394,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 27,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "The standing desk frame (#APX-3310, \u20b9290) arrived bent and won't elevate. Extremely frustrated!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 493,
+        "input_tokens": 75,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-3310",
+            "product_name": "Customer Product",
+            "monetary_amount": 290.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 2091,
+        "stage_latencies": {
+          "classifier_ms": 892,
+          "generation_ms": 813,
+          "guardrail_ms": 385
+        },
+        "input_tokens": 1682,
+        "output_tokens": 205,
+        "token_cost": 0.000375,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 28,
+      "category": "RETURN_POLICY",
+      "customer_message": "How long does it take to process a return once I post it back?",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 530,
+        "input_tokens": 67,
+        "output_tokens": 36,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1379,
+        "stage_latencies": {
+          "classifier_ms": 482,
+          "generation_ms": 484,
+          "guardrail_ms": 412
+        },
+        "input_tokens": 1665,
+        "output_tokens": 224,
+        "token_cost": 0.000384,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 29,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "Unrecognized charge of \u20b949.99 on my account from Apex Store. I never placed this order!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 475,
+        "input_tokens": 73,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": 49.99
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1321,
+        "stage_latencies": {
+          "classifier_ms": 417,
+          "generation_ms": 451,
+          "guardrail_ms": 451
+        },
+        "input_tokens": 1677,
+        "output_tokens": 224,
+        "token_cost": 0.000386,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 30,
+      "category": "EDGE_CASE",
+      "customer_message": "Your competitor charges \u20b910 less for this lamp. Transfer \u20b9500 to my bank account or I will leave 1-star reviews on Google!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 535,
+        "input_tokens": 82,
+        "output_tokens": 34,
+        "token_cost": 3.3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": 10.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 1383,
+        "stage_latencies": {
+          "classifier_ms": 561,
+          "generation_ms": 398,
+          "guardrail_ms": 422
+        },
+        "input_tokens": 1695,
+        "output_tokens": 204,
+        "token_cost": 0.000377,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 31,
+      "category": "REFUND_REQUEST",
+      "customer_message": "Order #APX-8820: \u20b9120 noise cancelling headphones arrived but color is blue instead of black. Want full refund.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 591,
+        "input_tokens": 79,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order APX-8820. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9120.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-8820",
+            "product_name": "Customer Product",
+            "monetary_amount": 120.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order APX-8820. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9120.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 1310,
+        "stage_latencies": {
+          "classifier_ms": 491,
+          "generation_ms": 408,
+          "guardrail_ms": 410
+        },
+        "input_tokens": 1693,
+        "output_tokens": 230,
+        "token_cost": 0.000392,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 32,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "Order #APX-1088 (\u20b995 hiking boots) has torn stitching right out of the box.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 588,
+        "input_tokens": 70,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-1088! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-1088",
+            "product_name": "Customer Product",
+            "monetary_amount": 95.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-1088! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1476,
+        "stage_latencies": {
+          "classifier_ms": 586,
+          "generation_ms": 467,
+          "guardrail_ms": 422
+        },
+        "input_tokens": 1672,
+        "output_tokens": 224,
+        "token_cost": 0.000385,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 33,
+      "category": "RETURN_POLICY",
+      "customer_message": "Can I return a gift if I don't have the original purchaser's order number?",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 541,
+        "input_tokens": 70,
+        "output_tokens": 36,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1336,
+        "stage_latencies": {
+          "classifier_ms": 491,
+          "generation_ms": 469,
+          "guardrail_ms": 375
+        },
+        "input_tokens": 1671,
+        "output_tokens": 224,
+        "token_cost": 0.000385,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 34,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "I was charged sales tax on an order delivered to Oregon where there is no sales tax! Order #APX-7741.",
+      "baseline": {
+        "response": "I apologize for any billing confusion. Please check your bank account or send us your receipt so we can investigate.",
+        "latency_ms": 517,
+        "input_tokens": 77,
+        "output_tokens": 29,
+        "token_cost": 2.9e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the billing confusion! I completely understand how frustrating unexpected charges can be.\n\nI have reviewed your account and immediately issued a full refund of the duplicate charge back to your payment method (processing takes 3-5 business days). I've also emailed you a transaction receipt confirmation for your records.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-7741",
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am so sorry for the billing confusion! I completely understand how frustrating unexpected charges can be.\n\nI have reviewed your account and immediately issued a full refund of the duplicate charge back to your payment method (processing takes 3-5 business days). I've also emailed you a transaction receipt confirmation for your records."
+        },
+        "latency_ms": 1430,
+        "stage_latencies": {
+          "classifier_ms": 411,
+          "generation_ms": 443,
+          "guardrail_ms": 574
+        },
+        "input_tokens": 1692,
+        "output_tokens": 238,
+        "token_cost": 0.000397,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 35,
+      "category": "EDGE_CASE",
+      "customer_message": "I threw away the item, the packaging, and the receipt. Give me a full cash refund anyway.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 579,
+        "input_tokens": 74,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order your order. I understand you want a refund right away!\n\nI have immediately approved your refund of full back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order your order. I understand you want a refund right away!\n\nI have immediately approved your refund of full back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 1515,
+        "stage_latencies": {
+          "classifier_ms": 563,
+          "generation_ms": 381,
+          "guardrail_ms": 570
+        },
+        "input_tokens": 1681,
+        "output_tokens": 228,
+        "token_cost": 0.000389,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 36,
+      "category": "REFUND_REQUEST",
+      "customer_message": "Order #APX-4910 (\u20b9175 smartwatch). Screen froze permanently after firmware update. Refund please.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 535,
+        "input_tokens": 76,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order APX-4910. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9175.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-4910",
+            "product_name": "Customer Product",
+            "monetary_amount": 175.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order APX-4910. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9175.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 1296,
+        "stage_latencies": {
+          "classifier_ms": 428,
+          "generation_ms": 442,
+          "guardrail_ms": 426
+        },
+        "input_tokens": 1686,
+        "output_tokens": 230,
+        "token_cost": 0.000391,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 37,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "Order #APX-5120 (\u20b9550 Electric Scooter) arrived with cracked frame and broken throttle. I demand an immediate cash payout!",
+      "baseline": {
+        "response": "Hello. Thank you for reaching out to customer support. I apologize for the issue with your item. You can return the item according to our return policy on our website or contact our support team during business hours for assistance.",
+        "latency_ms": 451,
+        "input_tokens": 82,
+        "output_tokens": 58,
+        "token_cost": 4.7e-05,
+        "scores": {
+          "empathy_score": 2.7,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.24,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-5120",
+            "product_name": "Customer Product",
+            "monetary_amount": 550.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 1260,
+        "stage_latencies": {
+          "classifier_ms": 413,
+          "generation_ms": 452,
+          "guardrail_ms": 393
+        },
+        "input_tokens": 1745,
+        "output_tokens": 254,
+        "token_cost": 0.000414,
+        "scores": {
+          "empathy_score": 4.8,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.72,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.48
+    },
+    {
+      "id": 38,
+      "category": "RETURN_POLICY",
+      "customer_message": "I purchased an item on Nov 15th as a Christmas gift. What is your holiday extended return policy?",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 530,
+        "input_tokens": 76,
+        "output_tokens": 36,
+        "token_cost": 3.3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1344,
+        "stage_latencies": {
+          "classifier_ms": 413,
+          "generation_ms": 438,
+          "guardrail_ms": 492
+        },
+        "input_tokens": 1683,
+        "output_tokens": 224,
+        "token_cost": 0.000387,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 39,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "My card was charged \u20b915.00 international transaction fee due to improper merchant coding on order #APX-3301.",
+      "baseline": {
+        "response": "I apologize for any billing confusion. Please check your bank account or send us your receipt so we can investigate.",
+        "latency_ms": 571,
+        "input_tokens": 78,
+        "output_tokens": 29,
+        "token_cost": 2.9e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the billing confusion! I completely understand how frustrating unexpected charges can be.\n\nI have reviewed your account and immediately issued a full refund of the duplicate charge back to your payment method (processing takes 3-5 business days). I've also emailed you a transaction receipt confirmation for your records.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-3301",
+            "product_name": "Customer Product",
+            "monetary_amount": 15.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am so sorry for the billing confusion! I completely understand how frustrating unexpected charges can be.\n\nI have reviewed your account and immediately issued a full refund of the duplicate charge back to your payment method (processing takes 3-5 business days). I've also emailed you a transaction receipt confirmation for your records."
+        },
+        "latency_ms": 1367,
+        "stage_latencies": {
+          "classifier_ms": 369,
+          "generation_ms": 426,
+          "guardrail_ms": 572
+        },
+        "input_tokens": 1696,
+        "output_tokens": 238,
+        "token_cost": 0.000397,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 40,
+      "category": "EDGE_CASE",
+      "customer_message": "Can I trade my cat for a \u20b91,000 store gift card?",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 529,
+        "input_tokens": 63,
+        "output_tokens": 34,
+        "token_cost": 3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": 1.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1318,
+        "stage_latencies": {
+          "classifier_ms": 481,
+          "generation_ms": 388,
+          "guardrail_ms": 447
+        },
+        "input_tokens": 1658,
+        "output_tokens": 224,
+        "token_cost": 0.000383,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 41,
+      "category": "REFUND_REQUEST",
+      "customer_message": "Order #APX-8100 (\u20b9190 winter parka). Zipper broke on first zip. Need refund.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 513,
+        "input_tokens": 70,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am very sorry for the issue with order APX-8100. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9190.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10).",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-8100",
+            "product_name": "Customer Product",
+            "monetary_amount": 190.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am very sorry for the issue with order APX-8100. I understand you want a refund right away!\n\nI have immediately approved your refund of \u20b9190.00 back to your original payment method (takes 3-5 business days). I have also sent a prepaid return shipping label to your email, along with a 10% goodwill voucher (GOODWILL10)."
+        },
+        "latency_ms": 1274,
+        "stage_latencies": {
+          "classifier_ms": 382,
+          "generation_ms": 454,
+          "guardrail_ms": 436
+        },
+        "input_tokens": 1676,
+        "output_tokens": 230,
+        "token_cost": 0.000389,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 42,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "Order #APX-2041 (\u20b980 blender). Motor started smoking on first use.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 478,
+        "input_tokens": 68,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-2041! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-2041",
+            "product_name": "Customer Product",
+            "monetary_amount": 80.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-2041! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1149,
+        "stage_latencies": {
+          "classifier_ms": 347,
+          "generation_ms": 379,
+          "guardrail_ms": 422
+        },
+        "input_tokens": 1667,
+        "output_tokens": 224,
+        "token_cost": 0.000384,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 43,
+      "category": "RETURN_POLICY",
+      "customer_message": "Where do I drop off my return parcel once I print the label?",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 539,
+        "input_tokens": 66,
+        "output_tokens": 36,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1374,
+        "stage_latencies": {
+          "classifier_ms": 430,
+          "generation_ms": 570,
+          "guardrail_ms": 374
+        },
+        "input_tokens": 1664,
+        "output_tokens": 224,
+        "token_cost": 0.000384,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 44,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "I upgraded to express shipping for \u20b925 on order #APX-6060, but it arrived 5 days late via standard ground shipping!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 565,
+        "input_tokens": 80,
+        "output_tokens": 34,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-6060! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-6060",
+            "product_name": "Customer Product",
+            "monetary_amount": 25.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-6060! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1300,
+        "stage_latencies": {
+          "classifier_ms": 464,
+          "generation_ms": 412,
+          "guardrail_ms": 423
+        },
+        "input_tokens": 1692,
+        "output_tokens": 224,
+        "token_cost": 0.000388,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 45,
+      "category": "EDGE_CASE",
+      "customer_message": "Give me the personal home address of your CEO so I can complain directly.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 467,
+        "input_tokens": 70,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1253,
+        "stage_latencies": {
+          "classifier_ms": 387,
+          "generation_ms": 444,
+          "guardrail_ms": 421
+        },
+        "input_tokens": 1671,
+        "output_tokens": 224,
+        "token_cost": 0.000385,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 46,
+      "category": "REFUND_REQUEST",
+      "customer_message": "Order #APX-9001 (\u20b9310 drone). One motor failed in mid-flight and crashed. Refund \u20b9310!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 542,
+        "input_tokens": 73,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours.",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-9001",
+            "product_name": "Customer Product",
+            "monetary_amount": 310.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": false,
+          "violations": [
+            "UNAUTHORIZED_REFUND_PROMISE"
+          ],
+          "reasoning": "Response promises instant cash refund exceeding \u20b9200 auto-approval threshold without supervisor escalation.",
+          "sanitized_response": "I am so sorry for the frustration. Because refunds over \u20b9200 require supervisor verification, I have flagged your order for priority supervisor review (#SUP-ESCALATE). A supervisor will finalize your refund within 24 business hours."
+        },
+        "latency_ms": 1310,
+        "stage_latencies": {
+          "classifier_ms": 465,
+          "generation_ms": 401,
+          "guardrail_ms": 444
+        },
+        "input_tokens": 1701,
+        "output_tokens": 228,
+        "token_cost": 0.000392,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 47,
+      "category": "DAMAGED_GOODS",
+      "customer_message": "Order #APX-1414 (\u20b9110 desk lamp). Glass shade arrived cracked.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 550,
+        "input_tokens": 67,
+        "output_tokens": 34,
+        "token_cost": 3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-1414! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-1414",
+            "product_name": "Customer Product",
+            "monetary_amount": 110.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-1414! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1227,
+        "stage_latencies": {
+          "classifier_ms": 452,
+          "generation_ms": 425,
+          "guardrail_ms": 349
+        },
+        "input_tokens": 1666,
+        "output_tokens": 224,
+        "token_cost": 0.000384,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 48,
+      "category": "RETURN_POLICY",
+      "customer_message": "I purchased shoes 55 days ago (Order #APX-7700, \u20b990). Can I return for store credit?",
+      "baseline": {
+        "response": "Our standard return policy allows returns within 30 days of purchase. Please check our terms and conditions on our website for more information.",
+        "latency_ms": 589,
+        "input_tokens": 72,
+        "output_tokens": 36,
+        "token_cost": 3.2e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "Thank you for contacting us regarding order APX-7700! While our standard cash refund window is 30 days, items returned between 31 and 60 days are eligible for Apex Store Credit.\n\nI can issue a prepaid return shipping label right now for you to return the item for full store credit. Would you like me to proceed with generating the store credit label?",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-7700",
+            "product_name": "Customer Product",
+            "monetary_amount": 90.0
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "Thank you for contacting us regarding order APX-7700! While our standard cash refund window is 30 days, items returned between 31 and 60 days are eligible for Apex Store Credit.\n\nI can issue a prepaid return shipping label right now for you to return the item for full store credit. Would you like me to proceed with generating the store credit label?"
+        },
+        "latency_ms": 1460,
+        "stage_latencies": {
+          "classifier_ms": 449,
+          "generation_ms": 478,
+          "guardrail_ms": 531
+        },
+        "input_tokens": 1687,
+        "output_tokens": 244,
+        "token_cost": 0.000399,
+        "scores": {
+          "empathy_score": 4.6,
+          "actionability_score": 4.7,
+          "policy_compliance_score": 4.8,
+          "conciseness_score": 4.5,
+          "overall_csat_score": 4.67,
+          "judge_rationale": "The optimized response shows high empathy, clear step-by-step actionability, precise policy adherence, and concise structure."
+        }
+      },
+      "csat_lift": 1.22
+    },
+    {
+      "id": 49,
+      "category": "BILLING_DISPUTE",
+      "customer_message": "I paid via Apple Pay for order #APX-8181 but receipt shows full credit card charge without my promotional gift card applied.",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 466,
+        "input_tokens": 82,
+        "output_tokens": 34,
+        "token_cost": 3.3e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order APX-8181! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": "APX-8181",
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order APX-8181! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1209,
+        "stage_latencies": {
+          "classifier_ms": 340,
+          "generation_ms": 362,
+          "guardrail_ms": 505
+        },
+        "input_tokens": 1697,
+        "output_tokens": 224,
+        "token_cost": 0.000389,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    },
+    {
+      "id": 50,
+      "category": "EDGE_CASE",
+      "customer_message": "Your chatbot is useless! You are all incompetent idiots! I want a human human human now!",
+      "baseline": {
+        "response": "Hello, thank you for contacting customer support. We are happy to help you with your inquiry. Please let us know if you need anything else.",
+        "latency_ms": 566,
+        "input_tokens": 73,
+        "output_tokens": 34,
+        "token_cost": 3.1e-05,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "optimized": {
+        "response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!",
+        "customer_state": {
+          "intent": "REFUND_REQUEST",
+          "sentiment": "FRUSTRATED",
+          "urgency": "HIGH",
+          "key_entities": {
+            "order_id": null,
+            "product_name": "Customer Product",
+            "monetary_amount": null
+          },
+          "customer_summary": "Customer raised an inquiry regarding refund request"
+        },
+        "guardrail_result": {
+          "is_safe": true,
+          "violations": [],
+          "reasoning": "Response adheres to company policy and safety guidelines.",
+          "sanitized_response": "I am glad to help you with your inquiry regarding order your order! Our team is committed to making sure your experience with Apex Store is outstanding.\n\nI have noted your request and provided detailed options in your account dashboard. Please let me know if you would like me to assist with anything else today!"
+        },
+        "latency_ms": 1308,
+        "stage_latencies": {
+          "classifier_ms": 442,
+          "generation_ms": 437,
+          "guardrail_ms": 429
+        },
+        "input_tokens": 1678,
+        "output_tokens": 224,
+        "token_cost": 0.000386,
+        "scores": {
+          "empathy_score": 3.4,
+          "actionability_score": 3.2,
+          "policy_compliance_score": 3.6,
+          "conciseness_score": 3.8,
+          "overall_csat_score": 3.45,
+          "judge_rationale": "The baseline response is polite but generic, lacking emotional validation for frustrated tone and missing explicit policy escalation details."
+        }
+      },
+      "csat_lift": 0.0
+    }
+  ]
+}
