@@ -22,6 +22,16 @@ graph TD
 
 ---
 
+## 📸 Interactive Dashboard Screenshots
+
+### 1. Live Pipeline Comparison & CSAT Rating Lift
+![Live Comparison Demo 1](docs/images/playground_demo1.png)
+
+### 2. Live Gemini API Response & Pipeline Inspection
+![Live Comparison Demo 2](docs/images/playground_demo2.png)
+
+---
+
 ## 📊 Executive Benchmark Results (50 Test Cases)
 
 Below is the aggregated comparative summary produced by `src/evaluator.py` evaluating all 50 customer inquiries:
